@@ -170,7 +170,7 @@
       setIsSubmitting(true);
       try {
         const token = localStorage.getItem("token")
-        const response = await axios.post("https://housingfy-backend.onrender.com/api/societies/add", formData, {
+        const response = await axios.post("https://housingfy-clean-backend.onrender.com/api/societies/add", formData, {
           headers: {
             Authorization: `Bearer ${token}`,
             "Content-Type": "application/json"

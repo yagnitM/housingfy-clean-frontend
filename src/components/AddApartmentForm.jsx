@@ -94,7 +94,7 @@ const AddApartmentForm = () => {
       // Add apartments
       const responses = await Promise.all(
         apartmentForms.map(apartment => 
-          axios.post("https://housingfy-backend.onrender.com/api/apartments/add", apartment, {
+          axios.post("https://housingfy-clean-backend.onrender.com/api/apartments/add", apartment, {
             headers: {
               Authorization: `Bearer ${token}`,
               "Content-Type": "application/json"

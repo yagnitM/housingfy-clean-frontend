@@ -24,7 +24,7 @@ const Login = () => {
     setLoading(true);
 
     try {
-      const response = await axios.post("https://housingfy-backend.onrender.com/api/auth/login", {
+      const response = await axios.post("https://housingfy-clean-backend.onrender.com/api/auth/login", {
         email,
         password,
       });
