@@ -1,0 +1,43 @@
+.track-complaint {
+    width: 80%;
+    margin: 20px auto;
+    text-align: center;
+  }
+  
+  h2 {
+    margin-bottom: 15px;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+  }
+  
+  th, td {
+    border: 1px solid #ddd;
+    padding: 10px;
+  }
+  
+  th {
+    background-color: #f4f4f4;
+  }
+  
+  .pending {
+    background-color: #ffc107;
+    color: black;
+    font-weight: bold;
+  }
+  
+  .resolved {
+    background-color: #28a745;
+    color: white;
+    font-weight: bold;
+  }
+  
+  .in-progress {
+    background-color: #17a2b8;
+    color: white;
+    font-weight: bold;
+  }
+  

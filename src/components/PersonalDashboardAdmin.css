@@ -1,0 +1,133 @@
+/* PersonalDashboardAdmin.css */
+
+.personal-dashboard-container {
+    padding: 20px;
+    background-color: #f0f8ff; /* Light blue background for the entire dashboard */
+    font-family: Arial, sans-serif;
+    color: #333;
+  }
+  
+  .dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .dashboard-header h1 {
+    font-size: 1.8rem;
+    color: #00509e; /* Dark blue for the header text */
+    display: flex;
+    align-items: center;
+  }
+  
+  .dashboard-header h1 svg {
+    margin-right: 8px;
+  }
+  
+  .add-society-button, .add-first-society-button {
+    background-color: #007acc; /* Vibrant blue for buttons */
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+  }
+  
+  .add-society-button:hover, .add-first-society-button:hover {
+    background-color: #00509e; /* Darker blue on hover */
+  }
+  
+  .success-message {
+    background-color: #e6f7ff; /* Light blue notification */
+    color: #007acc;
+    padding: 10px;
+    border: 1px solid #007acc;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    text-align: center;
+    font-weight: bold;
+  }
+  
+  .no-societies-message {
+    text-align: center;
+  }
+  
+  .no-societies-message p {
+    font-size: 1.2rem;
+    color: #555;
+  }
+  
+  .societies-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+  }
+  
+  .society-card {
+    background-color: #ffffff; /* White card background for contrast */
+    border: 1px solid #dce6f1; /* Subtle border */
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+  }
+  
+  .society-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  .society-card-header h3 {
+    font-size: 1.5rem;
+    color: #00509e;
+    margin-bottom: 10px;
+  }
+  
+  .society-card-details p {
+    font-size: 1rem;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  .society-card-stats .stat {
+    display: flex;
+    align-items: center;
+    font-size: 1rem;
+    color: #00509e;
+  }
+  
+  .society-card-stats .stat svg {
+    margin-right: 5px;
+  }
+  
+  .society-card-actions {
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .edit-button, .delete-button {
+    background-color: #007acc; /* Blue buttons */
+    color: #fff;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    font-size: 0.9rem;
+  }
+  
+  .edit-button:hover, .delete-button:hover {
+    background-color: #00509e; /* Darker shade on hover */
+  }
+  
+  .edit-button svg, .delete-button svg {
+    margin-right: 5px;
+  }
+  

@@ -1,0 +1,44 @@
+
+.maintain {
+  width: 80%;
+  margin: 20px auto;
+  text-align: center;
+}
+
+h2 {
+  margin-bottom: 15px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 10px;
+}
+
+th {
+  background-color: #f4f4f4;
+}
+
+.completed {
+  background-color: #d4edda;
+  color: #155724;
+  font-weight: bold;
+}
+
+.pending {
+  background-color: #f8d7da;
+  color: #721c24;
+  font-weight: bold;
+}
+
+.in-progress {
+  background-color: #fff3cd;
+  color: #856404;
+  font-weight: bold;
+}
+

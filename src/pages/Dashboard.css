@@ -1,0 +1,320 @@
+.dashboard-main {
+  background: linear-gradient(to bottom, #f0f4ff, #e6eeff);
+  min-height: 100vh;
+  padding: 40px 20px 80px; /* Added bottom padding to prevent card overlap with footer */
+  font-family: "Arial", sans-serif;
+}
+
+.dashboard-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative; /* For better positioning control */
+  padding-bottom: 40px; /* Extra space at bottom to prevent overlap */
+}
+
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.header-content {
+  text-align: left;
+}
+
+.dashboard-header h1 {
+  font-size: 2.2rem;
+  color: #2842b1; /* Adjusted blue color for better contrast */
+  margin-bottom: 8px;
+  font-weight: 700;
+}
+
+.dashboard-header p {
+  font-size: 1.1rem;
+  color: #5a6377; /* Darker shade for better readability */
+  max-width: 600px;
+}
+
+/* Logout Button */
+.logout-button {
+  text-decoration: none;
+}
+
+.logout-button button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background-color: transparent;
+  color: #e74c3c;
+  border: 2px solid #e74c3c;
+  padding: 10px 20px;
+  border-radius: 50px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 120px;
+}
+
+.logout-button button:hover {
+  background-color: #e74c3c;
+  color: white;
+}
+
+/* Centered Add Your Society Card */
+.centered-card {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+
+.add-society-card {
+  display: flex;
+  align-items: center;
+  max-width: 600px;
+  width: 100%;
+  background-color: #e3f2fd;
+  border: none;
+  border-left: 5px solid #4361ee;
+  box-shadow: 0 8px 16px rgba(67, 97, 238, 0.15);
+  padding: 25px;
+  border-radius: 12px;
+}
+
+.add-society-card:hover {
+  background-color: #d6ebfc;
+  transform: translateY(-5px);
+}
+
+.society-icon {
+  background-color: #4361ee;
+  color: white;
+}
+
+/* Feature Grid Layout */
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 24px;
+  margin: 0 auto;
+  height: auto;
+}
+
+/* Card Styling */
+.feature-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  border-radius: 12px;
+  padding: 25px;
+  text-align: left;
+  text-decoration: none;
+  color: #2b2d42;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  height: 100%;
+  margin-bottom: 10px; /* Extra bottom margin to prevent footer overlap */
+}
+
+.feature-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 5px;
+  height: 100%;
+  background-color: #4361ee;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.feature-card:hover {
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  transform: translateY(-5px);
+}
+
+.feature-card:hover::before {
+  opacity: 1;
+}
+
+.card-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #eaecfb;
+  color: #4361ee;
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  transition: all 0.3s ease;
+}
+
+.feature-card:hover .card-icon {
+  background-color: #4361ee;
+  color: white;
+  transform: scale(1.1);
+}
+
+.card-content {
+  flex: 1;
+}
+
+.feature-card h3 {
+  margin-top: 0;
+  margin-bottom: 12px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #2b2d42;
+}
+
+.feature-card p {
+  margin-bottom: 0;
+  color: #6c757d;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+/* Color theme variations - can be applied to different card types */
+.finance-card .card-icon {
+  background-color: #e3fcef;
+  color: #10b981;
+}
+
+.finance-card:hover .card-icon {
+  background-color: #10b981;
+  color: white;
+}
+
+.finance-card::before {
+  background-color: #10b981;
+}
+
+.residents-card .card-icon {
+  background-color: #feecea;
+  color: #f87171;
+}
+
+.residents-card:hover .card-icon {
+  background-color: #f87171;
+  color: white;
+}
+
+.residents-card::before {
+  background-color: #f87171;
+}
+
+.events-card .card-icon {
+  background-color: #fff4e5;
+  color: #f59e0b;
+}
+
+.events-card:hover .card-icon {
+  background-color: #f59e0b;
+  color: white;
+}
+
+.events-card::before {
+  background-color: #f59e0b;
+}
+
+/* Add space at the bottom of the page */
+.page-footer-space {
+  height: 60px;
+  width: 100%;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .dashboard-header {
+    flex-direction: row; /* Keep horizontal layout on medium screens */
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 15px 20px;
+  }
+  
+  .header-content {
+    text-align: left;
+    flex: 1;
+    min-width: 300px;
+  }
+  
+  .logout-button {
+    margin-left: auto;
+  }
+  
+  .feature-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .dashboard-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .dashboard-header h1 {
+    font-size: 1.8rem;
+  }
+  
+  .dashboard-header p {
+    font-size: 1rem;
+  }
+  
+  .feature-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .logout-button {
+    align-self: flex-end;
+    margin-top: 15px;
+  }
+}
+
+@media (max-width: 500px) {
+  .dashboard-main {
+    padding: 20px 15px 60px;
+  }
+  
+  .feature-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .add-society-card {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .add-society-card .card-icon {
+    margin-bottom: 15px;
+  }
+  
+  .dashboard-header h1 {
+    font-size: 1.5rem;
+  }
+  
+  .dashboard-header {
+    padding: 15px;
+  }
+}
+
+.feature-card {
+  min-height: 150px; /* Set a minimum height for cards */
+}
+
+.feature-grid {
+  grid-template-columns: 1fr;
+}

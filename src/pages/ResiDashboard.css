@@ -1,0 +1,184 @@
+:root {
+  --primary-bg-color: #f4f4f4;
+  --primary-text-color: #08eb5095;
+  --accent-color: #2196f3;
+  --hover-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  --transition-speed: 0.3s;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 20px; /* Ensures content isn't hidden behind fixed headers */
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.resi-dashboard-main {
+  padding: 30px;
+  text-align: center;
+  font-family: 'Inter', 'Arial', sans-serif;
+  background-color: #f9f9f9;
+  flex-grow: 1; /* Allows main content to expand */
+  margin-bottom: 50px; /* Space before footer */
+}
+
+.resi-dashboard-header {
+  margin-bottom: 40px;
+  color: var(--primary-text-color);
+}
+
+.centered-card {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2, auto);
+  gap: 25px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-bottom: 50px; /* Extra padding to prevent footer overlap */
+}
+
+@media (max-width: 1024px) {
+  .feature-grid {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .feature-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+  }
+}
+
+@media (max-width: 500px) {
+  .feature-grid {
+      grid-template-columns: repeat(1, 1fr);
+      gap: 15px;
+  }
+}
+
+.feature-card {
+  background-color: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  padding: 25px;
+  text-align: left;
+  text-decoration: none;
+  color: var(--primary-text-color);
+  transition: 
+      box-shadow var(--transition-speed) ease,
+      transform var(--transition-speed) ease,
+      border-color var(--transition-speed) ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.feature-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background-color: var(--accent-color);
+  transform: scaleX(0);
+  transition: transform var(--transition-speed) ease;
+}
+
+.feature-card:hover {
+  box-shadow: var(--hover-shadow);
+  transform: translateY(-8px);
+  border-color: var(--accent-color);
+}
+
+.feature-card:hover::before {
+  transform: scaleX(1);
+}
+
+.feature-card h3 {
+  margin-top: 0;
+  margin-bottom: 15px;
+  color: var(--accent-color);
+  font-size: 1.2em;
+  font-weight: 600;
+}
+
+.feature-card p {
+  margin-bottom: 0;
+  color: #666;
+  line-height: 1.6;
+}
+
+.logout-button {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+.logout-button button {
+  background-color: #f44336;
+  color: white;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 500;
+  width: 150px;
+  transition: 
+      background-color var(--transition-speed) ease,
+      transform var(--transition-speed) ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.logout-button button:hover {
+  background-color: #d32f2f;
+  transform: scale(1.05);
+}
+
+.my-apartment-card {
+  background-color: #e3f2fd;
+  border-color: var(--accent-color);
+}
+
+.my-apartment-card:hover {
+  background-color: #bbdefb;
+}
+
+/* Footer Styles */
+.footer {
+  background-color: #333;
+  color: white;
+  padding: 20px 0;
+  text-align: center;
+  margin-top: auto; /* Pushes footer to bottom */
+}
+
+/* Scroll to Footer Button */
+.scroll-to-footer {
+  display: block;
+  margin: 20px auto;
+  padding: 10px 20px;
+  background-color: var(--accent-color);
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.scroll-to-footer:hover {
+  background-color: #1976d2;
+} 

@@ -1,0 +1,38 @@
+
+.financial {
+  width: 80%;
+  margin: 20px auto;
+  text-align: center;
+}
+
+h2 {
+  margin-bottom: 15px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 10px;
+}
+
+th {
+  background-color: #f4f4f4;
+}
+
+.income {
+  background-color: #d4edda;
+  color: #155724;
+  font-weight: bold;
+}
+
+.expense {
+  background-color: #f8d7da;
+  color: #721c24;
+  font-weight: bold;
+}
+ 

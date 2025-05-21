@@ -1,0 +1,102 @@
+.login-container {
+    max-width: 350px;
+    margin: 50px auto;
+    padding: 25px; /* Increased padding */
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    background-color: #fff;
+    text-align: center;
+}
+
+/* Common styling for both email & password */
+.input-container {
+    position: relative;
+    width: 100%;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+}
+
+.input-container input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 15px;
+    transition: all 0.3s ease-in-out;
+    box-sizing: border-box;
+}
+
+.input-container input:focus {
+    border-color: #007BFF;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    outline: none;
+}
+
+/* Email container styling */
+.email-container {
+    position: relative;
+    width: 100%;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+    padding: 0 5px; /* Added horizontal padding */
+}
+
+/* Password field special styling */
+.password-container {
+    position: relative;
+    width: 100%;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+    padding: 0 5px; /* Added horizontal padding */
+}
+
+/* Eye icon only for password */
+.eye-icon {
+    position: absolute;
+    right: 17px; /* Adjusted for the new padding */
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    font-size: 18px;
+    color: #888;
+    transition: color 0.3s ease-in-out;
+}
+
+.eye-icon:hover {
+    color: #007BFF;
+}
+
+/* Error message styling */
+.error {
+    color: #dc3545;
+    margin: 10px 0;
+    font-size: 14px;
+}
+
+/* Button Styling */
+.login-container button {
+    width: calc(100% - 10px); /* Adjusted width to match inputs with padding */
+    padding: 12px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 15px;
+    transition: background 0.3s ease;
+    margin: 10px 5px; /* Added horizontal margin to match input padding */
+    box-sizing: border-box;
+}
+
+.login-container button:hover {
+    background-color: #0056b3;
+}
+
+/* Responsive Design */
+@media (max-width: 500px) {
+    .login-container {
+        width: 90%;
+        padding: 20px;
+    }
+}
