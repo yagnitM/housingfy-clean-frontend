@@ -1,133 +1,248 @@
-/* PersonalDashboardAdmin.css */
-
 .personal-dashboard-container {
-    padding: 20px;
-    background-color: #f0f8ff; /* Light blue background for the entire dashboard */
-    font-family: Arial, sans-serif;
-    color: #333;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  min-height: 100vh;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  background: white;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.07);
+}
+
+.dashboard-header h1 {
+  color: #2d3748;
+  font-size: 2rem;
+  font-weight: 600;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.dashboard-header h1 svg {
+  color: #4299e1;
+}
+
+.header-actions {
+  display: flex;
+  gap: 1rem;
+}
+
+.refresh-button, .add-society-button, .add-first-society-button {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.refresh-button {
+  background: #e2e8f0;
+  color: #4a5568;
+}
+
+.refresh-button:hover:not(:disabled) {
+  background: #cbd5e0;
+  transform: translateY(-1px);
+}
+
+.refresh-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.add-society-button, .add-first-society-button {
+  background: linear-gradient(135deg, #4299e1 0%, #3182ce 100%);
+  color: white;
+}
+
+.add-society-button:hover, .add-first-society-button:hover {
+  background: linear-gradient(135deg, #3182ce 0%, #2c5282 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(66, 153, 225, 0.3);
+}
+
+.success-message, .error-message {
+  padding: 1rem 1.5rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+  font-weight: 500;
+}
+
+.success-message {
+  background: #c6f6d5;
+  color: #22543d;
+  border: 1px solid #9ae6b4;
+}
+
+.error-message {
+  background: #fed7d7;
+  color: #742a2a;
+  border: 1px solid #fc8181;
+}
+
+.loading-message {
+  text-align: center;
+  padding: 3rem;
+  color: #718096;
+  font-size: 1.1rem;
+}
+
+.no-societies-message {
+  text-align: center;
+  background: white;
+  padding: 3rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.07);
+}
+
+.no-societies-message p {
+  color: #718096;
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+}
+
+.societies-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 1.5rem;
+}
+
+.society-card {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.07);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  border: 2px solid transparent;
+}
+
+.society-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  border-color: #4299e1;
+}
+
+.society-card-header h3 {
+  color: #2d3748;
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin: 0 0 1rem 0;
+}
+
+.society-card-details p {
+  color: #4a5568;
+  margin-bottom: 1rem;
+  line-height: 1.5;
+}
+
+.society-card-stats {
+  margin: 1rem 0;
+}
+
+.stat {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem;
+  background: #f7fafc;
+  border-radius: 6px;
+  color: #4a5568;
+  font-weight: 500;
+}
+
+.stat svg {
+  color: #4299e1;
+  margin-right: 0.5rem;
+}
+
+.stat span {
+  background: #4299e1;
+  color: white;
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.society-card-actions {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid #e2e8f0;
+}
+
+.edit-button, .delete-button {
+  flex: 1;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 6px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.edit-button {
+  background: #edf2f7;
+  color: #4a5568;
+}
+
+.edit-button:hover {
+  background: #e2e8f0;
+  color: #2d3748;
+}
+
+.delete-button {
+  background: #fed7d7;
+  color: #c53030;
+}
+
+.delete-button:hover {
+  background: #fc8181;
+  color: white;
+}
+
+@media (max-width: 768px) {
+  .personal-dashboard-container {
+    padding: 1rem;
   }
   
   .dashboard-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-  }
-  
-  .dashboard-header h1 {
-    font-size: 1.8rem;
-    color: #00509e; /* Dark blue for the header text */
-    display: flex;
-    align-items: center;
-  }
-  
-  .dashboard-header h1 svg {
-    margin-right: 8px;
-  }
-  
-  .add-society-button, .add-first-society-button {
-    background-color: #007acc; /* Vibrant blue for buttons */
-    color: #fff;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 5px;
-    font-size: 1rem;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-  }
-  
-  .add-society-button:hover, .add-first-society-button:hover {
-    background-color: #00509e; /* Darker blue on hover */
-  }
-  
-  .success-message {
-    background-color: #e6f7ff; /* Light blue notification */
-    color: #007acc;
-    padding: 10px;
-    border: 1px solid #007acc;
-    border-radius: 5px;
-    margin-bottom: 20px;
-    text-align: center;
-    font-weight: bold;
-  }
-  
-  .no-societies-message {
+    flex-direction: column;
+    gap: 1rem;
     text-align: center;
   }
   
-  .no-societies-message p {
-    font-size: 1.2rem;
-    color: #555;
+  .header-actions {
+    width: 100%;
+    justify-content: center;
   }
   
   .societies-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 20px;
-  }
-  
-  .society-card {
-    background-color: #ffffff; /* White card background for contrast */
-    border: 1px solid #dce6f1; /* Subtle border */
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    cursor: pointer;
-  }
-  
-  .society-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  }
-  
-  .society-card-header h3 {
-    font-size: 1.5rem;
-    color: #00509e;
-    margin-bottom: 10px;
-  }
-  
-  .society-card-details p {
-    font-size: 1rem;
-    color: #333;
-    margin-bottom: 10px;
-  }
-  
-  .society-card-stats .stat {
-    display: flex;
-    align-items: center;
-    font-size: 1rem;
-    color: #00509e;
-  }
-  
-  .society-card-stats .stat svg {
-    margin-right: 5px;
+    grid-template-columns: 1fr;
   }
   
   .society-card-actions {
-    margin-top: 15px;
-    display: flex;
-    justify-content: space-between;
+    flex-direction: column;
   }
-  
-  .edit-button, .delete-button {
-    background-color: #007acc; /* Blue buttons */
-    color: #fff;
-    padding: 8px 12px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    font-size: 0.9rem;
-  }
-  
-  .edit-button:hover, .delete-button:hover {
-    background-color: #00509e; /* Darker shade on hover */
-  }
-  
-  .edit-button svg, .delete-button svg {
-    margin-right: 5px;
-  }
-  
+}
