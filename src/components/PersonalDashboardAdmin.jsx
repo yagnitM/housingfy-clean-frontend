@@ -39,7 +39,7 @@ const PersonalDashboardAdmin = () => {
 
       console.log("Making API call with token:", token ? "Present" : "Missing");
       
-      const response = await axios.get("https://housingfy-backend.onrender.com/api/societies/admin", {
+      const response = await axios.get("https://housingfy-clean-backend.onrender.com/api/societies/admin", {
         headers: {
           Authorization: `Bearer ${token}`
         }
@@ -86,6 +86,13 @@ const PersonalDashboardAdmin = () => {
       } else if (error.response?.status >= 500) {
         setError("Server error. Please try again later.");
       } else {
+        console.log("We are hitting this!", error);
+        console.log(error);                  // Full error object
+        console.log(error.message);         // e.g. "Network Error"
+        console.log(error.code);            // e.g. "ERR_NETWORK", "ECONNABORTED"
+        console.log(error.response);        // Response object (if server responded)
+        console.log(error.response?.status); // e.g. 400, 401, 500 (optional chaining)
+        console.log(error.response?.data);   // Error body sent by backend
         setError("Failed to load societies. Please try again.");
       }
       
@@ -149,7 +156,7 @@ const PersonalDashboardAdmin = () => {
     if (window.confirm("Are you sure you want to delete this society?")) {
       try {
         const token = localStorage.getItem("token");
-        await axios.delete(`https://housingfy-backend.onrender.com/api/societies/${societyId}`, {
+        await axios.delete(`https://housingfy-clean-backend.onrender.com/api/societies/${societyId}`, {
           headers: {
             Authorization: `Bearer ${token}`
           }
