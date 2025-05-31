@@ -30,23 +30,65 @@ const PersonalDashboardAdmin = () => {
       setLoading(true);
       setError(null);
       const token = localStorage.getItem("token");
+      
+      if (!token) {
+        setError("No authentication token found. Please login again.");
+        setLoading(false);
+        return;
+      }
+
+      console.log("Making API call with token:", token ? "Present" : "Missing");
+      
       const response = await axios.get("https://housingfy-backend.onrender.com/api/societies/admin", {
         headers: {
           Authorization: `Bearer ${token}`
         }
       });
       
-      console.log("Fetched societies:", response.data); // For debugging
+      console.log("Full API response:", response);
+      console.log("Response status:", response.status);
+      console.log("Response data:", response.data);
+      console.log("Response data type:", typeof response.data);
+      console.log("Is response.data an array?", Array.isArray(response.data));
       
-      if (response.data && Array.isArray(response.data)) {
-        setSocieties(response.data);
-      } else {
-        setSocieties([]);
-        console.warn("Unexpected response format:", response.data);
+      // Handle different possible response structures
+      let societiesData = [];
+      
+      if (Array.isArray(response.data)) {
+        societiesData = response.data;
+      } else if (response.data && Array.isArray(response.data.societies)) {
+        societiesData = response.data.societies;
+      } else if (response.data && Array.isArray(response.data.data)) {
+        societiesData = response.data.data;
+      } else if (response.data && response.data.success && Array.isArray(response.data.societies)) {
+        societiesData = response.data.societies;
       }
+      
+      console.log("Processed societies data:", societiesData);
+      console.log("Number of societies:", societiesData.length);
+      
+      if (societiesData.length > 0) {
+        console.log("First society structure:", societiesData[0]);
+      }
+      
+      setSocieties(societiesData);
+      
     } catch (error) {
       console.error("Error fetching societies:", error);
-      setError("Failed to load societies. Please try again.");
+      console.error("Error response:", error.response);
+      
+      if (error.response?.status === 401) {
+        setError("Authentication failed. Please login again.");
+        // Optionally redirect to login
+        // navigate("/login");
+      } else if (error.response?.status === 403) {
+        setError("Access denied. You don't have permission to view societies.");
+      } else if (error.response?.status >= 500) {
+        setError("Server error. Please try again later.");
+      } else {
+        setError("Failed to load societies. Please try again.");
+      }
+      
       setSocieties([]);
     } finally {
       setLoading(false);
@@ -62,16 +104,36 @@ const PersonalDashboardAdmin = () => {
   };
 
   const handleSocietyCardClick = (society) => {
+    console.log("Clicked society:", society);
+    
+    // Safely handle rooms data
+    const safeRooms = society.rooms || {};
+    
     navigate("/add-apartment", { 
       state: { 
-        societyId: society._id,
+        societyId: society._id || society.id,
         name: society.name,
         rooms: {
-          studio: { count: society.rooms.studio?.count || 0, price: society.rooms.studio?.price || 0 },
-          '1BHK': { count: society.rooms['1BHK']?.count || 0, price: society.rooms['1BHK']?.price || 0 },
-          '2BHK': { count: society.rooms['2BHK']?.count || 0, price: society.rooms['2BHK']?.price || 0 },
-          '3BHK': { count: society.rooms['3BHK']?.count || 0, price: society.rooms['3BHK']?.price || 0 },
-          penthouse: { count: society.rooms.penthouse?.count || 0, price: society.rooms.penthouse?.price || 0 }
+          studio: { 
+            count: safeRooms.studio?.count || 0, 
+            price: safeRooms.studio?.price || 0 
+          },
+          '1BHK': { 
+            count: safeRooms['1BHK']?.count || 0, 
+            price: safeRooms['1BHK']?.price || 0 
+          },
+          '2BHK': { 
+            count: safeRooms['2BHK']?.count || 0, 
+            price: safeRooms['2BHK']?.price || 0 
+          },
+          '3BHK': { 
+            count: safeRooms['3BHK']?.count || 0, 
+            price: safeRooms['3BHK']?.price || 0 
+          },
+          penthouse: { 
+            count: safeRooms.penthouse?.count || 0, 
+            price: safeRooms.penthouse?.price || 0 
+          }
         }
       } 
     });
@@ -92,11 +154,28 @@ const PersonalDashboardAdmin = () => {
             Authorization: `Bearer ${token}`
           }
         });
+        setSuccessMessage("Society deleted successfully!");
         fetchSocieties(); // Refresh the list after deletion
       } catch (error) {
         console.error("Error deleting society:", error);
+        setError("Failed to delete society. Please try again.");
       }
     }
+  };
+
+  // Helper function to safely calculate total apartments
+  const getTotalApartments = (society) => {
+    if (!society.rooms) return 0;
+    
+    return Object.values(society.rooms).reduce(
+      (total, room) => {
+        if (room && typeof room.count === 'number') {
+          return total + room.count;
+        }
+        return total;
+      }, 
+      0
+    );
   };
 
   return (
@@ -150,25 +229,22 @@ const PersonalDashboardAdmin = () => {
             </div>
           ) : (
             <div className="societies-grid">
-              {societies.map((society) => (
+              {societies.map((society, index) => (
                 <div 
-                  key={society._id} 
+                  key={society._id || society.id || index} 
                   className="society-card"
                   onClick={() => handleSocietyCardClick(society)}
                 >
                   <div className="society-card-header">
-                    <h3>{society.name}</h3>
+                    <h3>{society.name || 'Unnamed Society'}</h3>
                   </div>
                   <div className="society-card-details">
-                    <p><strong>Address:</strong> {society.address}</p>
+                    <p><strong>Address:</strong> {society.address || 'No address provided'}</p>
                     <div className="society-card-stats">
                       <div className="stat">
                         <FaBuilding /> Apartments
                         <span>
-                          {Object.values(society.rooms).reduce(
-                            (total, room) => total + (room?.count || 0), 
-                            0
-                          )}
+                          {getTotalApartments(society)}
                         </span>
                       </div>
                     </div>
@@ -176,13 +252,13 @@ const PersonalDashboardAdmin = () => {
                   <div className="society-card-actions">
                     <button 
                       className="edit-button"
-                      onClick={(e) => handleEditSociety(society._id, e)}
+                      onClick={(e) => handleEditSociety(society._id || society.id, e)}
                     >
                       <FaEdit /> Edit
                     </button>
                     <button 
                       className="delete-button"
-                      onClick={(e) => handleDeleteSociety(society._id, e)}
+                      onClick={(e) => handleDeleteSociety(society._id || society.id, e)}
                     >
                       <FaTrash /> Delete
                     </button>

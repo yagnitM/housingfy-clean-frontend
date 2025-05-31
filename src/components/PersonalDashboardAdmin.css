@@ -1,10 +1,16 @@
+body {
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  min-height: 100vh;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
 .personal-dashboard-container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 2rem;
-  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
   min-height: 100vh;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .dashboard-header {
@@ -13,9 +19,10 @@
   align-items: center;
   margin-bottom: 2rem;
   background: white;
-  padding: 1.5rem;
-  border-radius: 12px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.07);
+  padding: 1.5rem 2rem;
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .dashboard-header h1 {
@@ -77,21 +84,24 @@
 
 .success-message, .error-message {
   padding: 1rem 1.5rem;
-  border-radius: 8px;
+  border-radius: 12px;
   margin-bottom: 1.5rem;
   font-weight: 500;
+  border: none;
+  position: relative;
+  overflow: hidden;
 }
 
 .success-message {
-  background: #c6f6d5;
+  background: linear-gradient(135deg, #c6f6d5 0%, #9ae6b4 100%);
   color: #22543d;
-  border: 1px solid #9ae6b4;
+  box-shadow: 0 4px 12px rgba(154, 230, 180, 0.3);
 }
 
 .error-message {
-  background: #fed7d7;
+  background: linear-gradient(135deg, #fed7d7 0%, #fc8181 100%);
   color: #742a2a;
-  border: 1px solid #fc8181;
+  box-shadow: 0 4px 12px rgba(252, 129, 129, 0.3);
 }
 
 .loading-message {
@@ -123,18 +133,35 @@
 
 .society-card {
   background: white;
-  border-radius: 12px;
+  border-radius: 16px;
   padding: 1.5rem;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.07);
-  transition: all 0.3s ease;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
-  border: 2px solid transparent;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.society-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #4299e1, #3182ce);
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.society-card:hover::before {
+  transform: scaleX(1);
 }
 
 .society-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-  border-color: #4299e1;
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
 }
 
 .society-card-header h3 {
