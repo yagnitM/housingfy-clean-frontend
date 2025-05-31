@@ -25,11 +25,12 @@ const PersonalDashboardAdmin = () => {
     const fetchSocieties = async () => {
       try {
         const token = localStorage.getItem("token");
-        const response = await axios.get("http://localhost:6060/api/societies/admin", {
+        const response = await axios.get("https://housingfy-clean-backend.onrender.com/api/societies/admin", {
           headers: {
             Authorization: `Bearer ${token}`
           }
         });
+        console.log("Fetched societies:", response.data); 
         setSocieties(response.data);
       } catch (error) {
         console.error("Error fetching societies:", error);
@@ -37,7 +38,7 @@ const PersonalDashboardAdmin = () => {
     };
 
     fetchSocieties();
-  }, []);
+  }, [location.state]);
 
   const handleAddSociety = () => {
     navigate("/add-society");
