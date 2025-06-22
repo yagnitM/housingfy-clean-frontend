@@ -48,7 +48,7 @@ const Signup = () => {
 
     setLoading(true);
 
-    try {
+    try { 
       console.log(username, email, password, isAdmin);
       const response = await axios.post("https://housingfy-clean-backend.onrender.com/api/auth/register", {
         username,

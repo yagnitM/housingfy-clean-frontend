@@ -45,11 +45,6 @@ const PersonalDashboardAdmin = () => {
         }
       });
       
-      console.log("Full API response:", response);
-      console.log("Response status:", response.status);
-      console.log("Response data:", response.data);
-      console.log("Response data type:", typeof response.data);
-      console.log("Is response.data an array?", Array.isArray(response.data));
       
       // Handle different possible response structures
       let societiesData = [];
@@ -86,13 +81,6 @@ const PersonalDashboardAdmin = () => {
       } else if (error.response?.status >= 500) {
         setError("Server error. Please try again later.");
       } else {
-        console.log("We are hitting this!", error);
-        console.log(error);                  // Full error object
-        console.log(error.message);         // e.g. "Network Error"
-        console.log(error.code);            // e.g. "ERR_NETWORK", "ECONNABORTED"
-        console.log(error.response);        // Response object (if server responded)
-        console.log(error.response?.status); // e.g. 400, 401, 500 (optional chaining)
-        console.log(error.response?.data);   // Error body sent by backend
         setError("Failed to load societies. Please try again.");
       }
       

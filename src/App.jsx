@@ -23,7 +23,7 @@ import Maintain from "./components/Maintain";
 import Announce from "./components/Announce";
 import Search from "./components/Search";
 import Report from "./components/Report";
-
+import SocietyDash from "./components/SocietyDash";
 
 
 function App() {
@@ -50,15 +50,7 @@ function App() {
             <Route path="/add-society" element={<AddSocietyForm />} />
             <Route path="/guest-dashboard" element={<GuestDash />} />
             <Route path="/personal-dashboard-admin" element={<PersonalDashboardAdmin />} />
-            {/* 
-            
-            
-            
-            
-            
-            
-             */}
-             <Route path="/announcements" element={<Announce />} />
+            <Route path="/announcements" element={<Announce />} />
             <Route path="/search" element={<Search />} />
             <Route path="/finances" element={<Financial />} />
             <Route path="/events" element={<Community />} />
@@ -66,6 +58,7 @@ function App() {
             <Route path="/reports" element={<Report />} />
             <Route path="/maintenance" element={<Maintain />} />
             <Route path="/residents" element={<ManageResident />} />
+            <Route path="/society-dash" element={<SocietyDash.jsx />} />
           </Routes>
         </div>
         <Footer />
